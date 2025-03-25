@@ -37,7 +37,11 @@ import 'theme_data.dart';
 /// The [states] parameter is the button's current pressed/hovered/etc state. The [child] is
 /// typically a descendant of the returned widget.
 typedef ButtonLayerBuilder =
-    Widget Function(BuildContext context, Set<MaterialState> states, Widget? child);
+    Widget Function(
+      BuildContext context,
+      Set<MaterialState> states,
+      Widget? child,
+    );
 
 /// The visual properties that most buttons have in common.
 ///
@@ -641,7 +645,11 @@ class ButtonStyle with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<MaterialStateProperty<Size?>>('fixedSize', fixedSize, defaultValue: null),
+      DiagnosticsProperty<MaterialStateProperty<Size?>>(
+        'fixedSize',
+        fixedSize,
+        defaultValue: null,
+      ),
     );
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<Size?>>(
@@ -658,11 +666,25 @@ class ButtonStyle with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<MaterialStateProperty<double?>>('iconSize', iconSize, defaultValue: null),
+      DiagnosticsProperty<MaterialStateProperty<double?>>(
+        'iconSize',
+        iconSize,
+        defaultValue: null,
+      ),
     );
-    properties.add(EnumProperty<IconAlignment>('iconAlignment', iconAlignment, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<MaterialStateProperty<BorderSide?>>('side', side, defaultValue: null),
+      EnumProperty<IconAlignment>(
+        'iconAlignment',
+        iconAlignment,
+        defaultValue: null,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<MaterialStateProperty<BorderSide?>>(
+        'side',
+        side,
+        defaultValue: null,
+      ),
     );
     properties.add(
       DiagnosticsProperty<MaterialStateProperty<OutlinedBorder?>>(
@@ -679,17 +701,39 @@ class ButtonStyle with Diagnosticable {
       ),
     );
     properties.add(
-      DiagnosticsProperty<VisualDensity>('visualDensity', visualDensity, defaultValue: null),
+      DiagnosticsProperty<VisualDensity>(
+        'visualDensity',
+        visualDensity,
+        defaultValue: null,
+      ),
     );
     properties.add(
-      EnumProperty<MaterialTapTargetSize>('tapTargetSize', tapTargetSize, defaultValue: null),
+      EnumProperty<MaterialTapTargetSize>(
+        'tapTargetSize',
+        tapTargetSize,
+        defaultValue: null,
+      ),
     );
     properties.add(
-      DiagnosticsProperty<Duration>('animationDuration', animationDuration, defaultValue: null),
+      DiagnosticsProperty<Duration>(
+        'animationDuration',
+        animationDuration,
+        defaultValue: null,
+      ),
     );
-    properties.add(DiagnosticsProperty<bool>('enableFeedback', enableFeedback, defaultValue: null));
     properties.add(
-      DiagnosticsProperty<AlignmentGeometry>('alignment', alignment, defaultValue: null),
+      DiagnosticsProperty<bool>(
+        'enableFeedback',
+        enableFeedback,
+        defaultValue: null,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<AlignmentGeometry>(
+        'alignment',
+        alignment,
+        defaultValue: null,
+      ),
     );
     properties.add(
       DiagnosticsProperty<ButtonLayerBuilder>(
@@ -749,18 +793,48 @@ class ButtonStyle with Diagnosticable {
         t,
         Color.lerp,
       ),
-      elevation: MaterialStateProperty.lerp<double?>(a?.elevation, b?.elevation, t, lerpDouble),
+      elevation: MaterialStateProperty.lerp<double?>(
+        a?.elevation,
+        b?.elevation,
+        t,
+        lerpDouble,
+      ),
       padding: MaterialStateProperty.lerp<EdgeInsetsGeometry?>(
         a?.padding,
         b?.padding,
         t,
         EdgeInsetsGeometry.lerp,
       ),
-      minimumSize: MaterialStateProperty.lerp<Size?>(a?.minimumSize, b?.minimumSize, t, Size.lerp),
-      fixedSize: MaterialStateProperty.lerp<Size?>(a?.fixedSize, b?.fixedSize, t, Size.lerp),
-      maximumSize: MaterialStateProperty.lerp<Size?>(a?.maximumSize, b?.maximumSize, t, Size.lerp),
-      iconColor: MaterialStateProperty.lerp<Color?>(a?.iconColor, b?.iconColor, t, Color.lerp),
-      iconSize: MaterialStateProperty.lerp<double?>(a?.iconSize, b?.iconSize, t, lerpDouble),
+      minimumSize: MaterialStateProperty.lerp<Size?>(
+        a?.minimumSize,
+        b?.minimumSize,
+        t,
+        Size.lerp,
+      ),
+      fixedSize: MaterialStateProperty.lerp<Size?>(
+        a?.fixedSize,
+        b?.fixedSize,
+        t,
+        Size.lerp,
+      ),
+      maximumSize: MaterialStateProperty.lerp<Size?>(
+        a?.maximumSize,
+        b?.maximumSize,
+        t,
+        Size.lerp,
+      ),
+      iconColor: MaterialStateProperty.lerp<Color?>(
+        a?.iconColor,
+        b?.iconColor,
+        t,
+        Color.lerp,
+      ),
+      iconSize: MaterialStateProperty.lerp<double?>(
+        a?.iconSize,
+        b?.iconSize,
+        t,
+        lerpDouble,
+      ),
       iconAlignment: t < 0.5 ? a?.iconAlignment : b?.iconAlignment,
       side: _lerpSides(a?.side, b?.side, t),
       shape: MaterialStateProperty.lerp<OutlinedBorder?>(
